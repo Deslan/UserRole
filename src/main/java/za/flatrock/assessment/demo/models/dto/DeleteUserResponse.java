@@ -1,4 +1,4 @@
-package za.flatrock.assessment.demo.models;
+package za.flatrock.assessment.demo.models.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class CreateUserRequest {
+public class DeleteUserResponse {
 
-    private String name;
-    private String surname;
+    private Boolean success;
 
 }

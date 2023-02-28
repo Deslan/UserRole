@@ -7,9 +7,13 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import za.flatrock.assessment.demo.models.CreateUserRequest;
-import za.flatrock.assessment.demo.models.CreateUserResponse;
+import za.flatrock.assessment.demo.models.RoleENUM;
+import za.flatrock.assessment.demo.models.dto.CreateUserRequest;
+import za.flatrock.assessment.demo.models.dto.CreateUserResponse;
+import za.flatrock.assessment.demo.models.entities.Role;
 import za.flatrock.assessment.demo.services.CreateUserService;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.any;
@@ -29,14 +33,16 @@ public class UserControllerTest {
     private CreateUserService createUserService;
 
     @Test
-    public void createUserTest() throws Exception {
+    void createUserTest() throws Exception {
 
         // Given
-        CreateUserResponse response = new CreateUserResponse(1L, "TestName", "TestSurname");
+        CreateUserResponse response = new CreateUserResponse(1L, "TestName", "TestSurname", "+27731832705", new ArrayList<>());
         when(createUserService.create(any())).thenReturn(response);
         CreateUserRequest request = new CreateUserRequest(
                 "TestName",
-                "TestSurname"
+                "TestSurname",
+                "+27731832705",
+                RoleENUM.ADMIN
         );
 
         // Then When
